@@ -4,7 +4,6 @@ import com.system.notification.Interceptor.RequestHeaderInterceptor;
 import com.system.notification.Repository.CommonCrudRepo;
 import com.system.notification.Service.JwtService;
 import com.system.notification.Utils.UserUtils;
-import com.system.notification.model.Event;
 import com.system.notification.model.Notification;
 import com.system.notification.model.User;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +17,6 @@ public class RepositoryConfigurations {
     @Bean
     public CommonCrudRepo<Notification> commonCrudRepoNotification(){return new CommonCrudRepo<>(Notification.class);}
 
-    @Bean CommonCrudRepo<Event> commonCrudRepoEvent(){return new CommonCrudRepo<>(Event.class);}
 
     @Bean
     public RequestHeaderInterceptor requestHeaderInterceptor(){return new RequestHeaderInterceptor();}

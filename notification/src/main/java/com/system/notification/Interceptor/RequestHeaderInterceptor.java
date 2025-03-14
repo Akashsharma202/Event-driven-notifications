@@ -23,19 +23,19 @@ public class RequestHeaderInterceptor implements WebRequestInterceptor {
     private JwtService jwtService;
     @Override
     public void preHandle(WebRequest request) throws Exception {
-//        String token = request.getHeader(AUTH_TOKEN);
-//        if (token == null || !token.startsWith("Bearer ")) {
-//            throw new Exception("Invalid or missing value for authorization token.");
-//        }
-//        token = token.substring(7);
-//        Date date = jwtService.extractExpiration(token);
-//        if(date.before(new Date())){
-//            throw new Exception("Token Expired.");
-//        }
-//        String username= jwtService.extractUserName(token);
-//        User user= userUtils.getUsersDetailsByName(username);
-//        ThreadContext.setUsers(user);
-//        logger.info("Setting thread context, user: " + ThreadContext.getUsers().getName());
+        String token = request.getHeader(AUTH_TOKEN);
+        if (token == null || !token.startsWith("Bearer ")) {
+            throw new Exception("Invalid or missing value for authorization token.");
+        }
+        token = token.substring(7);
+        Date date = jwtService.extractExpiration(token);
+        if(date.before(new Date())){
+            throw new Exception("Token Expired.");
+        }
+        String username= jwtService.extractUserName(token);
+        User user= userUtils.getUsersDetailsByName(username);
+        ThreadContext.setUsers(user);
+        logger.info("Setting thread context, user: " + ThreadContext.getUsers().getName());
     }
 
     @Override

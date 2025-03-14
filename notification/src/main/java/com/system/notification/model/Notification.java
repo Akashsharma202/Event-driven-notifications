@@ -16,6 +16,7 @@ public class Notification {
     private DeliveryStatus deliveryStatus;
     private String relatedEntityId;
 
+
     public String getId() {
         return id;
     }
